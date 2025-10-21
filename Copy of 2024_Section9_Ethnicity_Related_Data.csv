@@ -1,7 +1,6 @@
 Country of Birth,Full-time,Part-time,Total
-Australia,"519,542","287,702","807,244"
-"Norfolk Island and Australian External Territories, nec",11,10,21
-Australian Antarctic Territory,25,12,37
+Australia,"519,567","287,714","807,281"
+Norfolk Island,11,10,21
 Cook Islands,17,28,45
 Fiji,"1,033","1,328","2,361"
 French Polynesia,10,11,21
@@ -11,11 +10,10 @@ New Caledonia,34,25,59
 New Zealand,"10,992","8,685","19,677"
 Papua New Guinea,562,616,"1,178"
 Samoa,143,171,314
-"Samoa, American",12,14,26
+American Samoa,12,14,26
 Solomon Islands,36,38,74
 Tonga,84,115,199
 Vanuatu,16,21,37
-Countries with fewer than 20 students,51,37,88
 Austria,139,123,262
 Belgium,167,105,272
 Denmark,140,106,246
@@ -27,16 +25,15 @@ Iceland,10,10,20
 Ireland,"1,262","1,174","2,436"
 Isle of Man,19,12,31
 Jersey,33,25,58
-Luxembourg,19,< 5,np
+Luxembourg,19,0,19
 Netherlands,555,423,978
 Northern Ireland,234,213,447
 Norway,103,59,162
 Scotland,"1,256",949,"2,205"
 Sweden,213,151,364
 Switzerland,368,197,565
-"United Kingdom, Channel Islands and Isle of Man, nfd",376,489,865
+United Kingdom,376,489,865
 Wales,418,330,748
-Countries with fewer than 20 students,18,10,28
 Albania,54,27,81
 Belarus,40,37,77
 Bosnia and Herzegovina,177,236,413
@@ -58,14 +55,12 @@ North Macedonia,192,184,376
 Poland,340,425,765
 Portugal,127,110,237
 Romania,190,189,379
-Russian Federation,729,614,"1,343"
+Russia,729,614,"1,343"
 Serbia,223,205,428
 Slovakia,51,47,98
 Slovenia,31,42,73
-"South Eastern Europe, nfd",13,22,35
 Spain,280,203,483
 Ukraine,222,268,490
-Countries with fewer than 20 students,8,5,13
 Algeria,19,21,40
 Bahrain,140,73,213
 Egypt,"1,363",821,"2,184"
@@ -77,7 +72,7 @@ Kuwait,301,208,509
 Lebanon,885,663,"1,548"
 Libya,104,73,177
 Morocco,39,32,71
-Occupied Palestinian Territories,35,21,56
+Palestinian Territories,35,21,56
 Oman,170,74,244
 Qatar,139,36,175
 Saudi Arabia,770,389,"1,159"
@@ -87,8 +82,7 @@ Syria,"1,135",536,"1,671"
 TŸrkiye,431,397,828
 United Arab Emirates,"1,321",480,"1,801"
 Yemen,55,34,89
-Countries with fewer than 20 students,7,10,17
-Brunei Darussalam,108,73,181
+Brunei,108,73,181
 Cambodia,386,232,618
 Indonesia,"1,704","1,167","2,871"
 Laos,35,35,70
@@ -99,15 +93,14 @@ Singapore,"3,452","1,623","5,075"
 Thailand,"1,625",871,"2,496"
 Timor-Leste,61,37,98
 Vietnam,"3,378","2,149","5,527"
-China (excludes SARs and Taiwan),"14,821","8,920","23,741"
-Hong Kong (SAR of China),"3,736","2,099","5,835"
+China,"14,821","8,920","23,741"
+Hong Kong,"3,736","2,099","5,835"
 Japan,"1,328",655,"1,983"
-"Korea, Democratic People's Republic of (North)",15,21,36
-"Korea, Republic of (South)","3,510","2,214","5,724"
-Macau (SAR of China),75,37,112
+North Korea,15,21,36
+South Korea,"3,510","2,214","5,724"
+Macau,75,37,112
 Mongolia,65,49,114
 Taiwan,"1,138",750,"1,888"
-Countries with fewer than 20 students,0,< 5,< 5
 Afghanistan,"2,104","1,053","3,157"
 Armenia,12,13,25
 Azerbaijan,23,20,43
@@ -121,7 +114,6 @@ Nepal,"3,106","2,334","5,440"
 Pakistan,"3,492","2,053","5,545"
 Sri Lanka,"4,695","2,755","7,450"
 Uzbekistan,71,55,126
-Countries with fewer than 20 students,25,17,42
 Argentina,227,260,487
 Bermuda,36,20,56
 Bolivia,25,23,48
@@ -132,7 +124,7 @@ Chile,371,402,773
 Colombia,447,580,"1,027"
 Costa Rica,7,18,25
 Cuba,19,17,36
-Dominican Republic,16,< 5,np
+Dominican Republic,16,0,16
 Ecuador,55,54,109
 El Salvador,100,149,249
 Guatemala,11,14,25
@@ -146,13 +138,12 @@ Trinidad and Tobago,21,32,53
 United States of America,"4,633","2,420","7,053"
 Uruguay,44,66,110
 Venezuela,207,174,381
-Countries with fewer than 20 students,97,60,157
 Botswana,130,80,210
 Burundi,82,70,152
 Cameroon,32,39,71
-"Congo, Democratic Republic of",378,269,647
-"Congo, Republic of",46,39,85
-Cote d'Ivoire,54,39,93
+Congo [DRC],378,269,647
+Congo [Republic],46,39,85
+C™te d'Ivoire,54,39,93
 Eritrea,212,110,322
 Ethiopia,452,337,789
 Ghana,351,291,642
@@ -169,13 +160,10 @@ Seychelles,31,36,67
 Sierra Leone,158,161,319
 Somalia,226,209,435
 South Africa,"6,516","4,605","11,121"
-"Southern and East Africa, nec",12,15,27
 Tanzania,254,148,402
 Uganda,248,181,429
 Zambia,227,241,468
 Zimbabwe,"1,868","1,742","3,610"
-Countries with fewer than 20 students,95,81,176
-Not provided,"6,161","3,137","9,298"
 ,"687,037","399,752","1,086,789"
 ,"659,867","416,160","1,076,027"
 ,4.10%,-3.90%,1.00%
