@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "University Enrolments 2015–2024: Domestic vs International",
+  "width": 400,
+  "height": 250,
+  "background": "#ecebeb",
+  "config": {
+    "view": {
+      "fill": "#ecebeb"
+    }
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/ninflo/Data-Visualisation-FIT3179/fb3743afcbd855311554b8fa31f4b703daa213dc/students2015-2024.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "fold": [
+        "Domestic students",
+        "Domestic commencing students",
+        "Overseas commencing students",
+        "Overseas students"
+      ],
+      "as": ["series", "enrolments"]
+    },
+    {
+      "calculate": "datum.enrolments / 1000",
+      "as": "enrolments_in_thousands"
+    }
+  ],
+  "params": [
+    {
+      "name": "enrolment_selection",
+      "select": {"type": "point", "fields": ["series"]},
+      "bind": "legend"
+    }
+  ],
+
+  "mark": {"type": "line", "point": true},
+
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "timeUnit": "year",
+      "axis": {"title": "Year"}
+    },
+    "y": {
+      "field": "enrolments_in_thousands",
+      "type": "quantitative",
+      "axis": {"title": "Number of students ('000s)"}
+    },
+    "color": {
+      "field": "series",
+      "type": "nominal",
+      "title": "Student type",
+      "scale": {
+        "domain": ["Domestic students",
+        "Domestic commencing students",
+        "Overseas commencing students",
+        "Overseas students"],
+        "range": ["#f5c31d  ", "#33a02c", "#59bcd0", "#23479c"]
+      }
+    },
+    "tooltip": [
+      {"field": "Year", "type": "temporal", "timeUnit": "year", "title": "Year"},
+      {"field": "series", "type": "nominal", "title": "Student group"},
+      {"field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": ","}
+    ],
+    "opacity": {
+        "condition": {"param": "enrolment_selection", "value": 0.6},
+        "value": 0.2
+    }
+  }
+}
+

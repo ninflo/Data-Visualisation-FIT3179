@@ -1,0 +1,75 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Australian Teens' University Participation Rate",
+  "width":280,
+  "height": 300,
+  "background": "#ecebeb",
+  "config": {
+    "view": {
+      "fill": "#ecebeb"
+    }
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/ninflo/Data-Visualisation-FIT3179/055d4e5abd1c0806c47228372e507beef762cf6a/18%2619yo_uni.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {"fold": ["Age 18", "Age 19"], "as": ["Age_Group", "Percent"]},
+    {
+    "calculate": "datum['Age_Group'] == 'Age 18' ? '18 Year Olds' : '19 Year Olds'",
+    "as": "Age_Group"
+    },
+    {"filter": "age_selection == null || datum.Age_Group == age_selection"}
+  ],
+  "params": [
+    {
+      "name": "age_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          "18 Year Olds",
+          "19 Year Olds"
+        ],
+        "labels":[
+          "Show All",
+          "18 Year Olds",
+          "19 Year Olds"
+        ],
+        "name": "Select Age Group: "
+      }
+    }
+  ],
+
+  "mark": {"type": "bar"},
+  "encoding": {
+    "x": {
+      "field": "Year", 
+      "type": "ordinal", 
+      "axis": {"title": "Year"}
+    },
+    "y": {
+      "field": "Percent",
+      "type": "quantitative",
+      "title": "University participation (%)"
+    },
+    "color": {
+      "field": "Age_Group",
+      "type": "nominal",
+      "title": null,
+      "scale": {
+        "domain": ["18 Year Olds", "19 Year Olds"],
+        "range": ["#33a02c", "#b2df8a"]
+      }
+    },
+    "tooltip": [
+      {"field": "Year", "type": "ordinal"},
+      {"field": "Age_Group", "type": "nominal", "title": "Age Group"},
+      {"field": "Percent", "type": "quantitative", "title": "Percent in University"}
+    ],
+    "opacity": {
+        "condition": {"param": "age_selection", "value": 0.8},
+        "value": 0.4
+    }
+  }
+} 

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Enrolments per Faculty 2024",
+  "width":450,
+  "height": 350,
+  "background": "#ecebeb",
+  "config": {
+    "view": {
+      "fill": "#ecebeb"
+    }
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/ninflo/Data-Visualisation-FIT3179/refs/heads/main/data/uni_enrolments2024.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "fold": [
+        "Natural and Physical Sciences",
+        "Information Technology",
+        "Engineering and Related Technologies",
+        "Architecture and Building",
+        "Agriculture, Environmental and Related Studies",
+        "Health",
+        "Education",
+        "Management and Commerce",
+        "Society and Culture",
+        "Creative Arts",
+        "Food, Hospitality and Personal Services"
+      ],
+      "as": ["AreaOfStudy", "Enrolments"]
+    },
+    { "calculate": "datum.EnrolmentsNum < 0 ? 0 : datum.EnrolmentsNum", "as": "EnrolmentsPos" }, 
+    {
+      "aggregate": [
+        {
+          "op": "sum",
+          "field": "Enrolments",
+          "as": "TotalEnrolments"
+        }
+      ],
+      "groupby": ["AreaOfStudy"]
+    }
+  ],
+  
+  "mark": {"type": "bar", "color": "#f5c31d"},
+
+  "encoding": {
+    "y": {
+      "field": "AreaOfStudy",
+      "type": "nominal",
+      "sort": "-x",
+      "axis": {
+        "title": "Area of Study"
+      }
+    },
+    "x": {
+      "field": "TotalEnrolments",
+      "type": "quantitative",
+      "axis": {
+        "title": "Number of Enrolments"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "AreaOfStudy",
+        "type": "nominal",
+        "title": "Area of Study"
+      },
+      {
+        "field": "TotalEnrolments",
+        "type": "quantitative",
+        "title": "Total Enrolments"
+      }
+    ]
+  }
+}

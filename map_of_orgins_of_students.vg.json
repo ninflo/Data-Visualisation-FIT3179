@@ -1,0 +1,88 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 650,
+  "height": 350,
+  "background": "#ecebeb",
+  "config": {
+    "view": {
+      "fill": "#ecebeb"
+    }
+  },
+  "title": "Australian Universities' International Students Origins",
+  "projection": {"type": "equalEarth"},
+
+  "params": [
+    {
+      "name": "student_count",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 31000,
+        "step": 100,
+        "name": "Minimum Students:"
+      }
+    },
+    {
+      "name": "max_student",
+      "value": 31000,
+      "bind": {
+        "input": "range",
+        "min": 0,
+        "max": 31000,
+        "step": 100,
+        "name": "Maximum Students:"
+      }
+    }
+  ],
+
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/ninflo/Data-Visualisation-FIT3179/6531759b1f8a13895f588bcc0429ba1e391b75dc/world_map.json",
+        "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+      },
+      "mark": {"type": "geoshape", "fill": "darkgray", "stroke": "lightgray"}
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/ninflo/Data-Visualisation-FIT3179/4ebd856ef891bfdad08783187b8528465f3c0b12/Copy%20of%202024_Section9_Ethnicity_Related_Data.csv"
+      },
+      "transform": [
+        {"calculate": "trim(datum['Country of Birth'])", "as": "CountryOfBirthClean"},
+        {"filter": "datum.CountryOfBirthClean != 'Australia'"},
+        {
+          "lookup": "CountryOfBirthClean",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/ninflo/Data-Visualisation-FIT3179/23519074ff410a07e71f51ee8b57fe07bd99c558/world_country_latitude_and_longitude_values.csv"
+            },
+            "key": "country",
+            "fields": ["latitude", "longitude"]
+          }
+        },
+        {"filter": "isValid(datum.latitude) && isValid(datum.longitude)"},
+        
+        { "filter": "datum.Total >= student_count"},
+        { "filter": "datum.Total < max_student"}
+      ],
+      "mark": {"type": "circle", "size": 100},
+      "encoding": {
+        "longitude": {"field": "longitude", "type": "quantitative"},
+        "latitude": {"field": "latitude", "type": "quantitative"},
+        "color": {
+          "field": "Total",
+          "type": "quantitative",
+          "title": "Number of Students",
+          "scale": {"scheme": "yellowgreenblue"}
+        },
+        "tooltip": [
+          {"field": "CountryOfBirthClean", "type": "nominal", "title": "Country of Birth"},
+          {"field": "Full-time", "type": "quantitative", "title": "Full-time", "format": ","},
+          {"field": "Part-time", "type": "quantitative", "title": "Part-time", "format": ","},
+          {"field": "Total", "type": "quantitative", "title": "Total Students", "format": ","}
+        ]
+      }
+    }
+  ]
+}

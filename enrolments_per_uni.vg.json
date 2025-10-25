@@ -1,0 +1,76 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Enrolments per State and Institution (2024)",
+  "width":400,
+  "height": 400,
+  "background": "#ecebeb",
+  "config": {
+    "view": {
+      "fill": "#ecebeb"
+    }
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/ninflo/Data-Visualisation-FIT3179/refs/heads/main/data/uni_enrolments2024.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {"filter": "datum.Institution != 'Total'"}
+  ],
+  "encoding": {
+    "theta": {
+      "field": "State Total", 
+      "type": "quantitative", 
+      "stack": true,
+      "aggregate": "sum"
+    },
+    "color": {
+      "field": "State",
+      "type": "nominal",
+      "title": "State",
+      "legend": {"title": "State/Territory"}
+    },
+    "tooltip": [
+      {"field": "State"},
+      {"field": "State Total", "type": "quantitative", "format": ",", "title": "State Total Enrolments"}
+    ],
+    "order": {"field": "State", "type": "nominal"}
+  },
+  "layer": [
+    {
+      "mark": {"type": "arc", "radius2": 50, "radius": 100},
+      "transform": [
+        {
+          "aggregate": [{"op": "sum", "field": "Total Enrolments", "as": "State Total"}],
+          "groupby": ["State"]
+        }
+      ]
+    },
+    {
+      "mark": {
+        "type": "arc",
+        "radius2": 105,
+        "radius": 150,
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "theta": {
+          "field": "Total Enrolments",
+          "type": "quantitative",
+          "aggregate": "sum",
+          "stack": true
+        },
+        "color": {
+          "field": "State",
+          "type": "nominal",
+          "legend": null
+        },       
+        "tooltip": [
+          {"field": "Institution"},
+          {"field": "State"},
+          {"field": "Total Enrolments", "type": "quantitative", "aggregate": "sum", "format": ",", "title": "Total Enrolments"}
+        ]
+      }
+    }
+  ]
+}
