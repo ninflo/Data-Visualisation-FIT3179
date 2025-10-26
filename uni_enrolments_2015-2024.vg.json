@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "University Enrolments 2015–2024: Domestic vs International",
-  "width": 380,
+  "width": 350,
   "height": 250,
   "background": "#ecebeb",
   "config": {
