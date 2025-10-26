@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "University Enrolments 2015–2024: Domestic vs International",
-  "width": 400,
+  "width": 380,
   "height": 250,
   "background": "#ecebeb",
   "config": {
@@ -53,7 +53,7 @@
     "color": {
       "field": "series",
       "type": "nominal",
-      "title": "Student type",
+      "title": "Student type (click to highlight)",
       "scale": {
         "domain": ["Domestic students",
         "Domestic commencing students",
@@ -68,8 +68,8 @@
       {"field": "enrolments", "type": "quantitative", "title": "Enrolments", "format": ","}
     ],
     "opacity": {
-        "condition": {"param": "enrolment_selection", "value": 0.6},
-        "value": 0.2
+      "condition": {"param": "enrolment_selection", "value": 0.6},
+      "value": 0.2
     }
   }
 }

@@ -14,7 +14,41 @@
     "format": {"type": "csv"}
   },
   "transform": [
-    {"filter": "datum.Institution != 'Total'"}
+    {"filter": "datum.Institution != 'Total'"},
+    {"filter": "state_selection == null || datum.State == state_selection"}
+  ],
+  "params": [
+    {
+      "name": "state_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+        null,
+        "Australian Capital Territory",
+        "Multi-State",
+        "New South Wales",
+        "Northern Territory",
+        "Queensland",
+        "South Australia",
+        "Tasmania",
+        "Victoria",
+        "Western Australia"
+        ],
+        "labels":[
+        "Show All",
+        "Australian Capital Territory",
+        "Multi-state Institutions",
+        "New South Wales",
+        "Northern Territory",
+        "Queensland",
+        "South Australia",
+        "Tasmania",
+        "Victoria",
+        "Western Australia"
+        ],
+        "name": "Select State: "
+      }
+    }
   ],
   "encoding": {
     "theta": {
@@ -63,13 +97,27 @@
         "color": {
           "field": "State",
           "type": "nominal",
-          "legend": null
+          "legend": null,
+          "scale": {"scheme": "set2"}
         },       
         "tooltip": [
           {"field": "Institution"},
           {"field": "State"},
           {"field": "Total Enrolments", "type": "quantitative", "aggregate": "sum", "format": ",", "title": "Total Enrolments"}
         ]
+      }
+    },
+    {
+      "mark": {"type": "text", "radius": 155, "fontSize":9},
+      "encoding": {
+        "angle":{"value":0},
+        "theta":{"field":"Total Enrolments", "type": "quantitative", "stack":true},
+        "text": {"field": "Institution", "type": "nominal"},
+        "color": {"scale": "black"},
+        "opacity": {
+            "condition": {"selection": "state_selection", "value": 1},
+            "value": 0
+        }
       }
     }
   ]

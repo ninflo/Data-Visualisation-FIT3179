@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "Enrolments per Faculty 2024",
-  "width":450,
-  "height": 350,
+  "title": "Enrolments per Area of Study 2024",
+  "width":480,
+  "height": 300,
   "background": "#ecebeb",
   "config": {
     "view": {
@@ -32,7 +32,6 @@
       ],
       "as": ["AreaOfStudy", "Enrolments"]
     },
-    { "calculate": "datum.EnrolmentsNum < 0 ? 0 : datum.EnrolmentsNum", "as": "EnrolmentsPos" }, 
     {
       "aggregate": [
         {
@@ -44,7 +43,12 @@
       "groupby": ["AreaOfStudy"]
     }
   ],
-  
+  "selection": {
+    "faculty_highlight": {
+      "type": "multi",
+      "fields": ["AreaOfStudy"]
+    }
+  },
   "mark": {"type": "bar", "color": "#f5c31d"},
 
   "encoding": {
@@ -72,8 +76,13 @@
       {
         "field": "TotalEnrolments",
         "type": "quantitative",
-        "title": "Total Enrolments"
+        "title": "Total Enrolments", 
+        "format": ","
       }
-    ]
+    ],
+    "opacity": {
+      "condition": {"selection": "faculty_highlight", "value": 0.6},
+      "value": 0.2
+    }
   }
 }

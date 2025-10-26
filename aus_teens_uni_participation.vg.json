@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": "Australian Teens' University Participation Rate",
   "width":280,
-  "height": 300,
+  "height": 340,
   "background": "#ecebeb",
   "config": {
     "view": {
